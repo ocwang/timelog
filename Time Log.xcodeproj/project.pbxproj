@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CA4442A01E2CAADB008984B0 /* TimeLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44429F1E2CAADB008984B0 /* TimeLogCell.swift */; };
+		CAB68D271E2ADE61009BE2F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D261E2ADE61009BE2F9 /* AppDelegate.swift */; };
+		CAB68D291E2ADE61009BE2F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D281E2ADE61009BE2F9 /* ViewController.swift */; };
+		CAB68D2C1E2ADE61009BE2F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB68D2A1E2ADE61009BE2F9 /* Main.storyboard */; };
+		CAB68D2E1E2ADE61009BE2F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB68D2D1E2ADE61009BE2F9 /* Assets.xcassets */; };
+		CAB68D311E2ADE61009BE2F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB68D2F1E2ADE61009BE2F9 /* LaunchScreen.storyboard */; };
+		CAB68D391E2AE55E009BE2F9 /* ActiveTimeLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D381E2AE55E009BE2F9 /* ActiveTimeLogView.swift */; };
+		CAB68D3C1E2CA058009BE2F9 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D3B1E2CA058009BE2F9 /* TimeLog.swift */; };
+		CAB68D3F1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D3E1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CA44429F1E2CAADB008984B0 /* TimeLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogCell.swift; path = Views/TableViewCells/TimeLogCell.swift; sourceTree = "<group>"; };
+		CAB68D231E2ADE61009BE2F9 /* Time Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB68D261E2ADE61009BE2F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CAB68D281E2ADE61009BE2F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CAB68D2B1E2ADE61009BE2F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CAB68D2D1E2ADE61009BE2F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CAB68D301E2ADE61009BE2F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CAB68D321E2ADE61009BE2F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB68D381E2AE55E009BE2F9 /* ActiveTimeLogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActiveTimeLogView.swift; path = Views/ActiveTimeLogView.swift; sourceTree = "<group>"; };
+		CAB68D3B1E2CA058009BE2F9 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLog.swift; path = Models/TimeLog.swift; sourceTree = "<group>"; };
+		CAB68D3E1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimeInterval+Utility.swift"; path = "Extensions/TimeInterval+Utility.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CAB68D201E2ADE61009BE2F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CAB68D1A1E2ADE61009BE2F9 = {
+			isa = PBXGroup;
+			children = (
+				CAB68D251E2ADE61009BE2F9 /* Time Log */,
+				CAB68D241E2ADE61009BE2F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CAB68D241E2ADE61009BE2F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAB68D231E2ADE61009BE2F9 /* Time Log.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAB68D251E2ADE61009BE2F9 /* Time Log */ = {
+			isa = PBXGroup;
+			children = (
+				CAB68D261E2ADE61009BE2F9 /* AppDelegate.swift */,
+				CAB68D281E2ADE61009BE2F9 /* ViewController.swift */,
+				CAB68D3D1E2CA05E009BE2F9 /* Models */,
+				CAB68D3A1E2C845B009BE2F9 /* Views */,
+				CAB68D401E2CA0AD009BE2F9 /* Extensions */,
+				CAB68D2A1E2ADE61009BE2F9 /* Main.storyboard */,
+				CAB68D2D1E2ADE61009BE2F9 /* Assets.xcassets */,
+				CAB68D2F1E2ADE61009BE2F9 /* LaunchScreen.storyboard */,
+				CAB68D321E2ADE61009BE2F9 /* Info.plist */,
+			);
+			path = "Time Log";
+			sourceTree = "<group>";
+		};
+		CAB68D3A1E2C845B009BE2F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAB68D381E2AE55E009BE2F9 /* ActiveTimeLogView.swift */,
+				CA44429F1E2CAADB008984B0 /* TimeLogCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CAB68D3D1E2CA05E009BE2F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CAB68D3B1E2CA058009BE2F9 /* TimeLog.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CAB68D401E2CA0AD009BE2F9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CAB68D3E1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CAB68D221E2ADE61009BE2F9 /* Time Log */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAB68D351E2ADE61009BE2F9 /* Build configuration list for PBXNativeTarget "Time Log" */;
+			buildPhases = (
+				CAB68D1F1E2ADE61009BE2F9 /* Sources */,
+				CAB68D201E2ADE61009BE2F9 /* Frameworks */,
+				CAB68D211E2ADE61009BE2F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Time Log";
+			productName = "Time Log";
+			productReference = CAB68D231E2ADE61009BE2F9 /* Time Log.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CAB68D1B1E2ADE61009BE2F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = ocwang;
+				TargetAttributes = {
+					CAB68D221E2ADE61009BE2F9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = QXSA84SJDA;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CAB68D1E1E2ADE61009BE2F9 /* Build configuration list for PBXProject "Time Log" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAB68D1A1E2ADE61009BE2F9;
+			productRefGroup = CAB68D241E2ADE61009BE2F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAB68D221E2ADE61009BE2F9 /* Time Log */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAB68D211E2ADE61009BE2F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB68D311E2ADE61009BE2F9 /* LaunchScreen.storyboard in Resources */,
+				CAB68D2E1E2ADE61009BE2F9 /* Assets.xcassets in Resources */,
+				CAB68D2C1E2ADE61009BE2F9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CAB68D1F1E2ADE61009BE2F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB68D3F1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift in Sources */,
+				CAB68D291E2ADE61009BE2F9 /* ViewController.swift in Sources */,
+				CAB68D3C1E2CA058009BE2F9 /* TimeLog.swift in Sources */,
+				CA4442A01E2CAADB008984B0 /* TimeLogCell.swift in Sources */,
+				CAB68D271E2ADE61009BE2F9 /* AppDelegate.swift in Sources */,
+				CAB68D391E2AE55E009BE2F9 /* ActiveTimeLogView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CAB68D2A1E2ADE61009BE2F9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAB68D2B1E2ADE61009BE2F9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CAB68D2F1E2ADE61009BE2F9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAB68D301E2ADE61009BE2F9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CAB68D331E2ADE61009BE2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CAB68D341E2ADE61009BE2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CAB68D361E2ADE61009BE2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QXSA84SJDA;
+				INFOPLIST_FILE = "Time Log/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ocwang.Time-Log";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CAB68D371E2ADE61009BE2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QXSA84SJDA;
+				INFOPLIST_FILE = "Time Log/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ocwang.Time-Log";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAB68D1E1E2ADE61009BE2F9 /* Build configuration list for PBXProject "Time Log" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAB68D331E2ADE61009BE2F9 /* Debug */,
+				CAB68D341E2ADE61009BE2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAB68D351E2ADE61009BE2F9 /* Build configuration list for PBXNativeTarget "Time Log" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAB68D361E2ADE61009BE2F9 /* Debug */,
+				CAB68D371E2ADE61009BE2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CAB68D1B1E2ADE61009BE2F9 /* Project object */;
+}
