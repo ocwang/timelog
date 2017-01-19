@@ -8,18 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		CA4442A01E2CAADB008984B0 /* TimeLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44429F1E2CAADB008984B0 /* TimeLogCell.swift */; };
+		CAA7BA5D1E30653E00633679 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7BA5C1E30653E00633679 /* CoreDataStack.swift */; };
+		CAA7BA601E30661E00633679 /* TimeLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAA7BA5E1E30661E00633679 /* TimeLog.xcdatamodeld */; };
+		CAA7BA681E30674F00633679 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7BA661E30674F00633679 /* Log+CoreDataClass.swift */; };
+		CAA7BA691E30674F00633679 /* Log+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7BA671E30674F00633679 /* Log+CoreDataProperties.swift */; };
 		CAB68D271E2ADE61009BE2F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D261E2ADE61009BE2F9 /* AppDelegate.swift */; };
 		CAB68D291E2ADE61009BE2F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D281E2ADE61009BE2F9 /* ViewController.swift */; };
 		CAB68D2C1E2ADE61009BE2F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB68D2A1E2ADE61009BE2F9 /* Main.storyboard */; };
 		CAB68D2E1E2ADE61009BE2F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB68D2D1E2ADE61009BE2F9 /* Assets.xcassets */; };
 		CAB68D311E2ADE61009BE2F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB68D2F1E2ADE61009BE2F9 /* LaunchScreen.storyboard */; };
 		CAB68D391E2AE55E009BE2F9 /* ActiveTimeLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D381E2AE55E009BE2F9 /* ActiveTimeLogView.swift */; };
-		CAB68D3C1E2CA058009BE2F9 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D3B1E2CA058009BE2F9 /* TimeLog.swift */; };
 		CAB68D3F1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB68D3E1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA44429F1E2CAADB008984B0 /* TimeLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogCell.swift; path = Views/TableViewCells/TimeLogCell.swift; sourceTree = "<group>"; };
+		CAA7BA5C1E30653E00633679 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Core Data/CoreDataStack.swift"; sourceTree = "<group>"; };
+		CAA7BA5F1E30661E00633679 /* TimeLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeLog.xcdatamodel; sourceTree = "<group>"; };
+		CAA7BA661E30674F00633679 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Log+CoreDataClass.swift"; path = "Models/Log+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CAA7BA671E30674F00633679 /* Log+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Log+CoreDataProperties.swift"; path = "Models/Log+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CAB68D231E2ADE61009BE2F9 /* Time Log.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Log.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB68D261E2ADE61009BE2F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAB68D281E2ADE61009BE2F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,7 +35,6 @@
 		CAB68D301E2ADE61009BE2F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB68D321E2ADE61009BE2F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB68D381E2AE55E009BE2F9 /* ActiveTimeLogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActiveTimeLogView.swift; path = Views/ActiveTimeLogView.swift; sourceTree = "<group>"; };
-		CAB68D3B1E2CA058009BE2F9 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLog.swift; path = Models/TimeLog.swift; sourceTree = "<group>"; };
 		CAB68D3E1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimeInterval+Utility.swift"; path = "Extensions/TimeInterval+Utility.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CAA7BA611E30662600633679 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7BA5C1E30653E00633679 /* CoreDataStack.swift */,
+				CAA7BA5E1E30661E00633679 /* TimeLog.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		CAB68D1A1E2ADE61009BE2F9 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +79,7 @@
 			children = (
 				CAB68D261E2ADE61009BE2F9 /* AppDelegate.swift */,
 				CAB68D281E2ADE61009BE2F9 /* ViewController.swift */,
+				CAA7BA611E30662600633679 /* Core Data */,
 				CAB68D3D1E2CA05E009BE2F9 /* Models */,
 				CAB68D3A1E2C845B009BE2F9 /* Views */,
 				CAB68D401E2CA0AD009BE2F9 /* Extensions */,
@@ -87,7 +103,8 @@
 		CAB68D3D1E2CA05E009BE2F9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CAB68D3B1E2CA058009BE2F9 /* TimeLog.swift */,
+				CAA7BA661E30674F00633679 /* Log+CoreDataClass.swift */,
+				CAA7BA671E30674F00633679 /* Log+CoreDataProperties.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -173,10 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA7BA681E30674F00633679 /* Log+CoreDataClass.swift in Sources */,
+				CAA7BA5D1E30653E00633679 /* CoreDataStack.swift in Sources */,
 				CAB68D3F1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift in Sources */,
 				CAB68D291E2ADE61009BE2F9 /* ViewController.swift in Sources */,
-				CAB68D3C1E2CA058009BE2F9 /* TimeLog.swift in Sources */,
 				CA4442A01E2CAADB008984B0 /* TimeLogCell.swift in Sources */,
+				CAA7BA601E30661E00633679 /* TimeLog.xcdatamodeld in Sources */,
+				CAA7BA691E30674F00633679 /* Log+CoreDataProperties.swift in Sources */,
 				CAB68D271E2ADE61009BE2F9 /* AppDelegate.swift in Sources */,
 				CAB68D391E2AE55E009BE2F9 /* ActiveTimeLogView.swift in Sources */,
 			);
@@ -345,6 +365,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CAA7BA5E1E30661E00633679 /* TimeLog.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CAA7BA5F1E30661E00633679 /* TimeLog.xcdatamodel */,
+			);
+			currentVersion = CAA7BA5F1E30661E00633679 /* TimeLog.xcdatamodel */;
+			name = TimeLog.xcdatamodeld;
+			path = "Core Data/TimeLog.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CAB68D1B1E2ADE61009BE2F9 /* Project object */;
 }

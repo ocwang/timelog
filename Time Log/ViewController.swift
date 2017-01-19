@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 func notImplemented() -> Never {
     fatalError("not implemented")
@@ -14,15 +15,17 @@ func notImplemented() -> Never {
 
 class ViewController: UIViewController {
     
+    var managedContext: NSManagedObjectContext!
+    
     fileprivate var didSetupConstraints = false
     
     var activeTimeLogViewTopConstraint: NSLayoutConstraint!
     
     var activeTimer: Timer?
     
-    var startDate: Date?
+    var startDate: NSDate?
     
-    var timeLogs = [TimeLog]()
+    var timeLogs = [Log]()
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -30,6 +33,8 @@ class ViewController: UIViewController {
         
         return formatter
     }()
+    
+    
     
     // MARK: - Subviews
     
@@ -71,11 +76,17 @@ class ViewController: UIViewController {
         view.setNeedsUpdateConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchLogs()
+    }
+    
     func updateTimer(timer: Timer) {
         guard let startDate = startDate else { return }
         
         let secondsElapsed = -startDate.timeIntervalSinceNow
-        let timeElapsedString = secondsElapsed.toFormattedString
+        let timeElapsedString = secondsElapsed.toTimerString
         
         activeTimeLogView.collapsedTimeElapsedLabel.text = timeElapsedString
 
@@ -93,7 +104,7 @@ class ViewController: UIViewController {
         feedbackGenerator.impactOccurred()
         
         activeTimeLogView.state = .fullScreen(0.3)
-        startDate = Date()
+        startDate = NSDate()
         activeTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer(timer:)), userInfo: nil, repeats: true)
     }
     
@@ -117,6 +128,7 @@ extension ViewController {
             setupConstraints()
             didSetupConstraints = true
         }
+        
         super.updateViewConstraints()
     }
 }
@@ -127,13 +139,43 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let timeLog = timeLogs[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "timeLogCell", for: indexPath) as! TimeLogCell
-        cell.titleLabel.text = timeLog.title
-        cell.startedAtLabel.text = dateFormatter.string(from: timeLog.startDate)
-        
+        configure(cell, at: indexPath)
         
         return cell
+    }
+    
+    func configure(_ cell: TimeLogCell, at indexPath: IndexPath) {
+        let timeLog = timeLogs[indexPath.row]
+        
+        cell.titleLabel.text = timeLog.title
+        
+        guard let startDate = timeLog.startDateTime as? Date,
+            let endDate = timeLog.endDateTime as? Date
+            else { return }
+        
+        cell.startedAtLabel.text = dateFormatter.string(from: startDate)
+        
+        let timeIntervalElapsed = endDate.timeIntervalSince(startDate)
+        cell.durationLabel.text = timeIntervalElapsed.toDurationString
+    }
+}
+
+// MARK: - Core Data
+
+extension ViewController {
+    func fetchLogs() {
+        let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            timeLogs = results
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+            timeLogs = []
+        }
+        
+        tableView.reloadData()
     }
 }
 
@@ -154,23 +196,31 @@ extension ViewController: ActiveTimeLogViewDelegate {
             collapseActiveTimeLogToBottom(withDuration: duration)
             
         case .inactive:
-            
-            if let startDate = startDate {
-                let newIndex = timeLogs.count
-                
-                let timeLog = TimeLog(title: "Untitled", startDate: startDate)
-                timeLogs.append(timeLog)
-                
-                let indexPath = IndexPath(row: newIndex, section: 0)
-                tableView.insertRows(at: [indexPath], with: .fade)
-                
-            }
-            
-            stopTimerNow()
+            break
         }
     }
     
     func didTap(stopTimerButton button: UIButton, on view: ActiveTimeLogView) {
+        if let startDate = startDate {
+            let timeLogToInsert = Log(title: "Untitled", start: startDate, end: NSDate(), in: managedContext)
+            
+            timeLogToInsert.insert(into: managedContext) { (result) in
+                switch result {
+                case .success(let timeLog):
+                    let newIndex = timeLogs.count
+                    timeLogs.append(timeLog as! Log)
+                    
+                    let indexPath = IndexPath(row: newIndex, section: 0)
+                    tableView.insertRows(at: [indexPath], with: .fade)
+                    
+                case .error(let error):
+                    assertionFailure("Error: \(error.localizedDescription)")
+                }
+            }
+            
+        }
+        
+        stopTimerNow()
         activeTimeLogView.state = .inactive
     }
     
@@ -333,4 +383,3 @@ extension ViewController {
         }
     }
 }
-
