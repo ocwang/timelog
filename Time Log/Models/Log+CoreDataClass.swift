@@ -9,11 +9,6 @@
 import Foundation
 import CoreData
 
-enum ManagedObjectResult {
-    case success(NSManagedObject)
-    case error(NSError)
-}
-
 public class Log: NSManagedObject {
     
     // MARK: - Init
@@ -26,14 +21,4 @@ public class Log: NSManagedObject {
     }
 }
 
-extension NSManagedObject {
-    func insert(into managedContext: NSManagedObjectContext, completionHandler: (ManagedObjectResult) -> Void)  {
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            completionHandler(.error(error))
-        }
-        
-        completionHandler(.success(self))
-    }
-}
+

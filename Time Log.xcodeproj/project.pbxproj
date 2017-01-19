@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA4442A01E2CAADB008984B0 /* TimeLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44429F1E2CAADB008984B0 /* TimeLogCell.swift */; };
+		CA91451D1E30BC8400A1EEFE /* NSManagedObject+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91451C1E30BC8400A1EEFE /* NSManagedObject+Utility.swift */; };
 		CAA7BA5D1E30653E00633679 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7BA5C1E30653E00633679 /* CoreDataStack.swift */; };
 		CAA7BA601E30661E00633679 /* TimeLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAA7BA5E1E30661E00633679 /* TimeLog.xcdatamodeld */; };
 		CAA7BA681E30674F00633679 /* Log+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7BA661E30674F00633679 /* Log+CoreDataClass.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		CA44429F1E2CAADB008984B0 /* TimeLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogCell.swift; path = Views/TableViewCells/TimeLogCell.swift; sourceTree = "<group>"; };
+		CA91451C1E30BC8400A1EEFE /* NSManagedObject+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Utility.swift"; path = "Extensions/NSManagedObject+Utility.swift"; sourceTree = "<group>"; };
 		CAA7BA5C1E30653E00633679 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Core Data/CoreDataStack.swift"; sourceTree = "<group>"; };
 		CAA7BA5F1E30661E00633679 /* TimeLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeLog.xcdatamodel; sourceTree = "<group>"; };
 		CAA7BA661E30674F00633679 /* Log+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Log+CoreDataClass.swift"; path = "Models/Log+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB68D3E1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift */,
+				CA91451C1E30BC8400A1EEFE /* NSManagedObject+Utility.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 				CAB68D1F1E2ADE61009BE2F9 /* Sources */,
 				CAB68D201E2ADE61009BE2F9 /* Frameworks */,
 				CAB68D211E2ADE61009BE2F9 /* Resources */,
+				CA91451B1E30BC0300A1EEFE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -185,6 +189,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CA91451B1E30BC0300A1EEFE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CAB68D1F1E2ADE61009BE2F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -192,6 +212,7 @@
 			files = (
 				CAA7BA681E30674F00633679 /* Log+CoreDataClass.swift in Sources */,
 				CAA7BA5D1E30653E00633679 /* CoreDataStack.swift in Sources */,
+				CA91451D1E30BC8400A1EEFE /* NSManagedObject+Utility.swift in Sources */,
 				CAB68D3F1E2CA0A9009BE2F9 /* TimeInterval+Utility.swift in Sources */,
 				CAB68D291E2ADE61009BE2F9 /* ViewController.swift in Sources */,
 				CA4442A01E2CAADB008984B0 /* TimeLogCell.swift in Sources */,

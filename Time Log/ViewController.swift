@@ -15,7 +15,11 @@ func notImplemented() -> Never {
 
 class ViewController: UIViewController {
     
+    // MARK: - Instance Vars
+    
     var managedContext: NSManagedObjectContext!
+    
+    var fetchResultsController: NSFetchedResultsController<Log>!
     
     fileprivate var didSetupConstraints = false
     
@@ -34,8 +38,6 @@ class ViewController: UIViewController {
         return formatter
     }()
     
-    
-    
     // MARK: - Subviews
     
     @IBOutlet weak var tableView: UITableView!
@@ -53,9 +55,9 @@ class ViewController: UIViewController {
     
     fileprivate var isNavigationBarHidden: Bool = false {
         didSet {
-            guard let navCon = self.navigationController, navCon.isNavigationBarHidden != isNavigationBarHidden else {
-                return
-            }
+            guard let navCon = self.navigationController,
+                navCon.isNavigationBarHidden != isNavigationBarHidden
+                else { return }
             
             navCon.setNavigationBarHidden(isNavigationBarHidden, animated: true)
         }
@@ -66,6 +68,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupFetchedResultsController()
+        
         activeTimeLogView.state = .inactive
         activeTimeLogView.delegate = self
         
@@ -74,12 +78,6 @@ class ViewController: UIViewController {
         
         view.addSubview(activeTimeLogView)
         view.setNeedsUpdateConstraints()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        fetchLogs()
     }
     
     func updateTimer(timer: Timer) {
@@ -107,8 +105,6 @@ class ViewController: UIViewController {
         startDate = NSDate()
         activeTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer(timer:)), userInfo: nil, repeats: true)
     }
-    
-    
 }
 
 // MARK: - Autolayout
@@ -133,9 +129,15 @@ extension ViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension ViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchResultsController.sections?.count ?? 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timeLogs.count
+        return fetchResultsController.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,7 +148,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func configure(_ cell: TimeLogCell, at indexPath: IndexPath) {
-        let timeLog = timeLogs[indexPath.row]
+        let timeLog = fetchResultsController.object(at: indexPath)
         
         cell.titleLabel.text = timeLog.title
         
@@ -164,18 +166,19 @@ extension ViewController: UITableViewDataSource {
 // MARK: - Core Data
 
 extension ViewController {
-    func fetchLogs() {
+    func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Log.startDateTime), ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultsController.delegate = self
         
         do {
-            let results = try managedContext.fetch(fetchRequest)
-            timeLogs = results
+            try fetchResultsController.performFetch()
         } catch let error as NSError {
             print("Fetch error: \(error) description: \(error.userInfo)")
-            timeLogs = []
         }
-        
-        tableView.reloadData()
     }
 }
 
@@ -203,21 +206,12 @@ extension ViewController: ActiveTimeLogViewDelegate {
     func didTap(stopTimerButton button: UIButton, on view: ActiveTimeLogView) {
         if let startDate = startDate {
             let timeLogToInsert = Log(title: "Untitled", start: startDate, end: NSDate(), in: managedContext)
-            
             timeLogToInsert.insert(into: managedContext) { (result) in
                 switch result {
-                case .success(let timeLog):
-                    let newIndex = timeLogs.count
-                    timeLogs.append(timeLog as! Log)
-                    
-                    let indexPath = IndexPath(row: newIndex, section: 0)
-                    tableView.insertRows(at: [indexPath], with: .fade)
-                    
-                case .error(let error):
-                    assertionFailure("Error: \(error.localizedDescription)")
+                case .success: break
+                case .error(let error): assertionFailure("Error: \(error.localizedDescription)")
                 }
             }
-            
         }
         
         stopTimerNow()
@@ -225,8 +219,6 @@ extension ViewController: ActiveTimeLogViewDelegate {
     }
     
     func didTap(toggleStateButton button: UIButton, on view: ActiveTimeLogView) {
-        
-        
         switch view.state {
         case .fullScreen:
             view.state = .collapsed(0.3)
@@ -236,17 +228,13 @@ extension ViewController: ActiveTimeLogViewDelegate {
             
         default: break
         }
-        
-        
     }
     
     func didPan(_ panGesture: UIPanGestureRecognizer, on view: ActiveTimeLogView) {
         guard let panView = panGesture.view else { return }
         
         let translatedPoint = panGesture.translation(in: view)
-        
-        
-        
+
         if panGesture.state == .began || panGesture.state == .changed {
             translate(panView: panView, withTranslatedPoint: translatedPoint)
             panGesture.setTranslation(.zero, in: view)
@@ -381,5 +369,35 @@ extension ViewController {
             self.view.setNeedsUpdateConstraints()
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+extension ViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller:
+        NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+            
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            
+        case .update:
+            let cell = tableView.cellForRow(at: indexPath!) as! TimeLogCell
+            configure(cell, at: indexPath!)
+            
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller:
+        NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
 }
